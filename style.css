@@ -276,13 +276,277 @@ input, select, textarea {
   background: rgba(28, 36, 51, 0.8);
 }
 
+.btn-lg {
+  padding: 13px 28px;
+  font-size: 16px;
+  border-radius: 12px;
+}
+
+/* ============ 3-КОЛОНОЧНЫЙ МАКЕТ ГЛАВНОГО МЕНЮ (HUD DASHBOARD) ============ */
+.menu-layout {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 290px 1fr 290px;
+  gap: 24px;
+  padding: 24px 36px;
+  align-items: center;
+  max-width: 1440px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+@media (max-width: 1100px) {
+  .menu-layout {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+  .menu-side {
+    display: none; /* Скрывать боковины на смартфонах/планшетах для удобства */
+  }
+}
+
+.menu-side {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.hud-card {
+  background: rgba(19, 25, 36, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.hud-card:hover {
+  border-color: rgba(99, 102, 241, 0.4);
+  background: rgba(28, 36, 51, 0.85);
+  box-shadow: var(--shadow-md), var(--shadow-glow);
+  transform: translateY(-2px);
+}
+
+.hud-card-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding-bottom: 8px;
+}
+
+.hud-card-title {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--steel-bright);
+  text-transform: uppercase;
+}
+
+.hud-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-faint);
+}
+
+.hud-status-dot.active {
+  background: var(--green);
+  box-shadow: 0 0 10px var(--green);
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.85); }
+}
+
+.hud-metric {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.hud-metric:last-child {
+  margin-bottom: 0;
+}
+
+.hud-metric .label {
+  color: var(--text-muted);
+}
+
+.hud-metric .value {
+  color: var(--chalk);
+  font-weight: 500;
+}
+
+.hud-metric .value.mono {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--steel-bright);
+}
+
+.hud-metric .value.badge-danger {
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.12);
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  font-size: 11px;
+  font-family: var(--font-mono);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+/* Прогресс в HUD */
+.hud-progress-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hud-progress-bar {
+  height: 8px;
+  background: rgba(11, 15, 23, 0.8);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+
+.hud-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #6366f1, #10b981);
+  border-radius: var(--radius-pill);
+  transition: width 0.4s ease;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+}
+
+.hud-progress-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+
+.hud-progress-info b {
+  color: var(--chalk);
+  font-family: var(--font-mono);
+}
+
+/* Профиль в HUD */
+.hud-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hud-avatar {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(16, 185, 129, 0.2));
+  border: 1px solid var(--steel);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--steel-bright);
+  font-weight: 600;
+  box-shadow: 0 0 12px rgba(99, 102, 241, 0.2);
+}
+
+.hud-profile-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.hud-profile-info b {
+  font-size: 14px;
+  color: var(--chalk);
+}
+
+.hud-profile-info span {
+  font-size: 12px;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+}
+
+.hud-quote {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-style: italic;
+  margin: 0;
+  line-height: 1.5;
+  border-left: 2px solid var(--steel);
+  padding-left: 10px;
+}
+
+.hud-footer-tech {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--text-faint);
+  padding: 4px 6px;
+  opacity: 0.7;
+}
+
+.hud-footer-tech.right-align {
+  text-align: right;
+}
+
+/* HUD Декоративные уголки */
+.hud-corner {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(99, 102, 241, 0.3);
+  pointer-events: none;
+  z-index: 10;
+}
+
+.hud-corner.top-left {
+  top: 14px;
+  left: 14px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.hud-corner.top-right {
+  top: 14px;
+  right: 14px;
+  border-left: none;
+  border-bottom: none;
+}
+
+.hud-corner.bottom-left {
+  bottom: 14px;
+  left: 14px;
+  border-right: none;
+  border-top: none;
+}
+
+.hud-corner.bottom-right {
+  bottom: 14px;
+  right: 14px;
+  border-left: none;
+  border-top: none;
+}
+
 .center-col {
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 40px 20px;
+  padding: 30px 20px;
   text-align: center;
 }
 

@@ -31,6 +31,13 @@ const STR = {
       lead:"Профессор Артемий Гауссов заперт в «Нулевом Блоке» — тюрьме, где замки, камеры и лифты подчиняются не силе, а расчёту. Единственный выход — решить её.",
       newGame:"Новая игра", continueGame:"Продолжить"
     },
+    hud: {
+      sysStatus: "СТАТУС ОБЪЕКТА", sector: "Сектор:", secLevel: "Безопасность:", secMax: "МАКСИМАЛЬНАЯ",
+      encryption: "Шифрование:", progressTitle: "ПРОГРЕСС ПОБЕГА", locksSolved: "Замков решено:",
+      dossierTitle: "ДОСЬЕ УЗНИКА", prisonerName: "Артемий Гауссов", prisonerId: "Заключенный #3.1415",
+      spec: "Специализация:", specVal: "Высшая математика", quoteTitle: "ДНЕВНИК ГАУССОВА",
+      quoteText: "«Всякая тюрьма — лишь система уравнений. Найди ключевые переменные — и дверь откроется сама.»"
+    },
     mode: {
       brandSuffix:"выбор режима", kicker:"ШАГ 1 ИЗ 2", title:"Выберите режим побега",
       lead:"Режим влияет на сложность чисел, количество подсказок и штраф тревоги. Тюрьма та же — правила снисхождения разные.",
@@ -100,6 +107,13 @@ const STR = {
       kicker:"МАТЕМАТИКАЛЫҚ ТҮРМЕ", title:"Қашу Формуласы",
       lead:"Профессор Артемий Гауссов «Нөлдік Блокта» — құлыптары, камералары және лифтілері күшке емес, есептеуге бағынатын түрмеде қамауда отыр. Шығудың жалғыз жолы — оны шешу.",
       newGame:"Жаңа ойын", continueGame:"Жалғастыру"
+    },
+    hud: {
+      sysStatus: "ОБЪЕКТ СТАТУСЫ", sector: "Сектор:", secLevel: "Қауіпсіздік:", secMax: "ЖОҒАРҒЫ",
+      encryption: "Шифрлау:", progressTitle: "ҚАШУ ПРОГРЕСІ", locksSolved: "Шешілген құлыптар:",
+      dossierTitle: "ТҰТҚЫН ДОРБАСЫ", prisonerName: "Артемий Гауссов", prisonerId: "Тұтқын #3.1415",
+      spec: "Мамандығы:", specVal: "Жоғары математика", quoteTitle: "ГАУССОВ КҮННӘМАСЫ",
+      quoteText: "«Кез келген түрме — бұл тек теңдеулер жүйесі. Негізгі айнымалыларды тап — есік өзі ашылады.»"
     },
     mode: {
       brandSuffix:"режимді таңдау", kicker:"1-ҚАДАМ / 2", title:"Қашу режимін таңдаңыз",
@@ -1027,6 +1041,23 @@ function initBgCanvas() {
   animate();
 }
 
+function updateMenuHudProgress(saved) {
+  const locksCountEl = document.getElementById("menu-locks-count");
+  const progressFillEl = document.getElementById("menu-progress-fill");
+  if (!locksCountEl || !progressFillEl) return;
+
+  if (saved && saved.solved) {
+    const count = Object.keys(saved.solved).length;
+    const total = 12;
+    const pct = Math.min(100, Math.round((count / total) * 100));
+    locksCountEl.textContent = `${count} / ${total}`;
+    progressFillEl.style.width = `${pct}%`;
+  } else {
+    locksCountEl.textContent = `0 / 12`;
+    progressFillEl.style.width = `0%`;
+  }
+}
+
 /* =========================================================
    ИНИЦИАЛИЗАЦИЯ
    ========================================================= */
@@ -1036,6 +1067,8 @@ async function init(){
   initBgCanvas();
 
   const saved = await loadProgress();
+  updateMenuHudProgress(saved);
+
   if(saved){
     document.getElementById("btn-continue").disabled = false;
     document.getElementById("btn-continue").addEventListener("click", ()=>{
