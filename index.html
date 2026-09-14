@@ -14,7 +14,7 @@
 
 <!-- ================= ГЛАВНОЕ МЕНЮ ================= -->
 <div class="screen active" id="screen-menu">
-  <!-- HUD Корнеры по углам экрана -->
+  <!-- Неоновые уголки интерфейса -->
   <div class="hud-corner top-left"></div>
   <div class="hud-corner top-right"></div>
   <div class="hud-corner bottom-left"></div>
@@ -31,91 +31,50 @@
     </div>
   </div>
 
-  <div class="menu-layout">
-    <!-- Левая панель HUD -->
-    <aside class="menu-side left">
-      <div class="hud-card">
-        <div class="hud-card-head">
-          <span class="hud-status-dot active"></span>
-          <span class="hud-card-title" data-i18n="hud.sysStatus">СТАТУС ОБЪЕКТА</span>
-        </div>
-        <div class="hud-metric">
-          <span class="label" data-i18n="hud.sector">Сектор:</span>
-          <span class="value">Нулевой Блок · Секция π</span>
-        </div>
-        <div class="hud-metric">
-          <span class="label" data-i18n="hud.secLevel">Безопасность:</span>
-          <span class="value badge-danger" data-i18n="hud.secMax">МАКСИМАЛЬНАЯ</span>
-        </div>
-        <div class="hud-metric">
-          <span class="label" data-i18n="hud.encryption">Шифрование:</span>
-          <span class="value mono">4096-BIT MATH</span>
-        </div>
-      </div>
+  <div class="hero-container">
+    <!-- Анимированное голографическое кольцо высшей математики -->
+    <div class="holo-ring-wrap">
+      <div class="holo-ring ring-outer"></div>
+      <div class="holo-ring ring-inner"></div>
+      <div class="holo-core">π</div>
+    </div>
 
-      <div class="hud-card">
-        <div class="hud-card-head">
-          <span class="hud-card-title" data-i18n="hud.progressTitle">ПРОГРЕСС ПОБЕГА</span>
-        </div>
-        <div class="hud-progress-wrap">
-          <div class="hud-progress-bar"><div class="hud-progress-fill" id="menu-progress-fill" style="width: 0%;"></div></div>
-          <div class="hud-progress-info">
-            <span data-i18n="hud.locksSolved">Замков решено:</span>
-            <b id="menu-locks-count">0 / 12</b>
-          </div>
-        </div>
+    <main class="center-col hero-content">
+      <div class="kicker-badge">
+        <span class="pulse-dot"></span>
+        <span data-i18n="menu.kicker"></span>
       </div>
-
-      <div class="hud-footer-tech">
-        <span>SYS.LOC: 51.1693° N, 71.4491° E</span>
-        <span>STATUS: ONLINE · V2.4.0</span>
-      </div>
-    </aside>
-
-    <!-- Центральная колонка -->
-    <main class="center-col">
-      <div class="kicker" data-i18n="menu.kicker"></div>
-      <h1 data-i18n="menu.title"></h1>
+      
+      <h1 class="glitch-title" data-i18n="menu.title"></h1>
       <p class="lead" data-i18n="menu.lead"></p>
-      <div style="display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:8px;">
-        <button class="btn btn-primary btn-lg" id="btn-new-game" data-i18n="menu.newGame"></button>
-        <button class="btn btn-lg" id="btn-continue" disabled data-i18n="menu.continueGame"></button>
+
+      <div class="cta-group">
+        <button class="btn btn-cyber-primary btn-xl" id="btn-new-game">
+          <span class="btn-icon">▶</span>
+          <span data-i18n="menu.newGame"></span>
+        </button>
+        <button class="btn btn-cyber-secondary btn-xl" id="btn-continue" disabled>
+          <span class="btn-icon">⚡</span>
+          <span data-i18n="menu.continueGame"></span>
+        </button>
+      </div>
+
+      <!-- Быстрая статистика/статус внизу в виде компактных неоновых плашек -->
+      <div class="hero-stats-row">
+        <div class="stat-pill">
+          <span class="stat-lbl" data-i18n="hud.sector">Сектор:</span>
+          <span class="stat-val">Нулевой Блок</span>
+        </div>
+        <div class="stat-pill">
+          <span class="stat-lbl" data-i18n="hud.locksSolved">Замков:</span>
+          <span class="stat-val neon-green" id="menu-locks-count">0 / 12</span>
+        </div>
+        <div class="stat-pill">
+          <span class="stat-lbl">Статус:</span>
+          <span class="stat-val neon-cyan">ONLINE</span>
+        </div>
       </div>
     </main>
-
-    <!-- Правая панель HUD -->
-    <aside class="menu-side right">
-      <div class="hud-card">
-        <div class="hud-card-head">
-          <span class="hud-card-title" data-i18n="hud.dossierTitle">ДОСЬЕ УЗНИКА</span>
-        </div>
-        <div class="hud-profile">
-          <div class="hud-avatar">π</div>
-          <div class="hud-profile-info">
-            <b data-i18n="hud.prisonerName">Артемий Гауссов</b>
-            <span data-i18n="hud.prisonerId">Заключенный #3.1415</span>
-          </div>
-        </div>
-        <div class="hud-metric" style="margin-top:12px;">
-          <span class="label" data-i18n="hud.spec">Специализация:</span>
-          <span class="value" data-i18n="hud.specVal">Высшая математика</span>
-        </div>
-      </div>
-
-      <div class="hud-card lore-card">
-        <div class="hud-card-head">
-          <span class="hud-card-title" data-i18n="hud.quoteTitle">ДНЕВНИК ГАУССОВА</span>
-        </div>
-        <p class="hud-quote" data-i18n="hud.quoteText">
-          «Всякая тюрьма — лишь система уравнений. Найди ключевые переменные — и дверь откроется сама.»
-        </p>
-      </div>
-
-      <div class="hud-footer-tech right-align">
-        <span>MATH_ENGINE: ACTIVE</span>
-        <span>PROTOCOL: ESCAPE_MATH</span>
-      </div>
-    </aside>
   </div>
 </div>
 

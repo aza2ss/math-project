@@ -955,14 +955,15 @@ function initBgCanvas() {
     reset() {
       this.x = Math.random() * width;
       this.y = Math.random() * height;
-      this.vx = (Math.random() - 0.5) * 0.45;
-      this.vy = (Math.random() - 0.5) * 0.45;
-      this.isSymbol = Math.random() > 0.4;
+      this.vx = (Math.random() - 0.5) * 0.5;
+      this.vy = (Math.random() - 0.5) * 0.5;
+      this.isSymbol = Math.random() > 0.35;
       this.text = symbols[Math.floor(Math.random() * symbols.length)];
-      this.size = this.isSymbol ? Math.random() * 8 + 12 : Math.random() * 2 + 1.5;
-      this.alpha = Math.random() * 0.35 + 0.15;
+      this.size = this.isSymbol ? Math.random() * 10 + 13 : Math.random() * 2.5 + 1.5;
+      this.alpha = Math.random() * 0.45 + 0.2;
       this.baseAlpha = this.alpha;
-      this.color = Math.random() > 0.3 ? "#818cf8" : (Math.random() > 0.5 ? "#6366f1" : "#10b981");
+      const palette = ["#00f2fe", "#4facfe", "#b829ea", "#00f5a0", "#7928ca"];
+      this.color = palette[Math.floor(Math.random() * palette.length)];
     }
     update() {
       this.x += this.vx;
@@ -979,9 +980,9 @@ function initBgCanvas() {
       const dist = Math.hypot(dx, dy);
       if (dist < mouse.radius) {
         const force = (mouse.radius - dist) / mouse.radius;
-        this.x -= (dx / dist) * force * 1.5;
-        this.y -= (dy / dist) * force * 1.5;
-        this.alpha = Math.min(0.8, this.baseAlpha + force * 0.4);
+        this.x -= (dx / dist) * force * 2;
+        this.y -= (dy / dist) * force * 2;
+        this.alpha = Math.min(0.9, this.baseAlpha + force * 0.5);
       } else {
         this.alpha += (this.baseAlpha - this.alpha) * 0.05;
       }
@@ -990,13 +991,17 @@ function initBgCanvas() {
       ctx.save();
       ctx.globalAlpha = this.alpha;
       if (this.isSymbol) {
-        ctx.font = `${this.size}px 'IBM Plex Mono', monospace`;
+        ctx.font = `600 ${this.size}px 'IBM Plex Mono', monospace`;
         ctx.fillStyle = this.color;
+        ctx.shadowColor = this.color;
+        ctx.shadowBlur = 8;
         ctx.fillText(this.text, this.x, this.y);
       } else {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fillStyle = this.color;
+        ctx.shadowColor = this.color;
+        ctx.shadowBlur = 6;
         ctx.fill();
       }
       ctx.restore();
@@ -1016,10 +1021,10 @@ function initBgCanvas() {
         const dx = particles[i].x - particles[j].x;
         const dy = particles[i].y - particles[j].y;
         const dist = Math.hypot(dx, dy);
-        if (dist < 110) {
+        if (dist < 125) {
           ctx.save();
-          ctx.globalAlpha = (1 - dist / 110) * 0.15;
-          ctx.strokeStyle = "#6366f1";
+          ctx.globalAlpha = (1 - dist / 125) * 0.22;
+          ctx.strokeStyle = "#00f2fe";
           ctx.lineWidth = 1;
           ctx.beginPath();
           ctx.moveTo(particles[i].x, particles[i].y);
