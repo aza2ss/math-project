@@ -1,39 +1,38 @@
 /* ============ ТОКЕНЫ ============ */
 :root {
-  --bg:            #050814;
-  --bg-raised:     #0d1224;
-  --bg-panel:      #131a30;
-  --line:          #1e2942;
-  --line-soft:     #162035;
-  --chalk:         #f8fafc;
-  --text-muted:    #94a3b8;
-  --text-faint:    #64748b;
+  --bg:            #1a141e;
+  --bg-raised:     #251d2b;
+  --bg-panel:      #302538;
+  --line:          #42324d;
+  --line-soft:     #35283e;
+  --chalk:         #fef8ee;
+  --text-muted:    #d1c3d9;
+  --text-faint:    #9e8ca8;
   
-  /* Неоновая палитра */
-  --cyan-neon:     #00f2fe;
-  --cyan-bright:   #4facfe;
-  --violet-neon:   #7928ca;
-  --violet-bright: #b829ea;
-  --pink-neon:     #f43f5e;
-  --emerald-neon:  #00f5a0;
+  /* Теплая солнечная палитра */
+  --amber-gold:    #fbbf24;
+  --amber-bright:  #f59e0b;
+  --coral-warm:    #ff6b4a;
+  --rose-warm:     #f43f5e;
+  --terracotta:    #e11d48;
+  --emerald-warm:  #10b981;
   
-  --steel:         #4f46e5;
-  --steel-bright:  #818cf8;
-  --steel-glow:    rgba(0, 242, 254, 0.4);
+  --steel:         #f59e0b;
+  --steel-bright:  #fbbf24;
+  --steel-glow:    rgba(245, 158, 11, 0.45);
   --amber:         #f59e0b;
-  --amber-bright:  #fbbf24;
-  --red:           #ef4444;
-  --green:         #00f5a0;
+  --red:           #ff6b4a;
+  --green:         #10b981;
   
   --font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
   --radius: 12px;
   --radius-sm: 8px;
   --radius-pill: 9999px;
-  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.4);
-  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.6);
-  --shadow-neon-cyan: 0 0 25px rgba(0, 242, 254, 0.45);
-  --shadow-neon-violet: 0 0 25px rgba(121, 40, 202, 0.45);
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --shadow-warm-amber: 0 0 30px rgba(245, 158, 11, 0.45);
+  --shadow-warm-coral: 0 0 30px rgba(255, 107, 74, 0.45);
   --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -56,10 +55,10 @@ body {
   position: relative;
   overflow-x: hidden;
   background-image: 
-    linear-gradient(rgba(0, 242, 254, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 242, 254, 0.05) 1px, transparent 1px),
-    radial-gradient(circle at 50% 30%, rgba(121, 40, 202, 0.25) 0%, transparent 60%),
-    radial-gradient(circle at 85% 85%, rgba(0, 245, 160, 0.08) 0%, transparent 50%);
+    linear-gradient(rgba(245, 158, 11, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245, 158, 11, 0.05) 1px, transparent 1px),
+    radial-gradient(circle at 50% 30%, rgba(245, 158, 11, 0.22) 0%, transparent 60%),
+    radial-gradient(circle at 85% 85%, rgba(255, 107, 74, 0.12) 0%, transparent 50%);
   background-size: 48px 48px, 48px 48px, 100% 100%, 100% 100%;
   background-attachment: fixed;
 }
@@ -288,9 +287,9 @@ input, select, textarea {
   background: rgba(28, 36, 51, 0.8);
 }
 
-/* ============ КИБЕР-КНОПКИ (CYBERPUNK ACTION BUTTONS) ============ */
+/* ============ КИБЕР-КНОПКИ В ТЕПЛЫХ ТОНАХ (WARM SOLAR BUTTONS) ============ */
 .btn-xl {
-  padding: 16px 36px;
+  padding: 16px 38px;
   font-size: 17px;
   font-weight: 700;
   letter-spacing: 0.04em;
@@ -298,40 +297,40 @@ input, select, textarea {
 }
 
 .btn-cyber-primary {
-  background: linear-gradient(135deg, #00f2fe 0%, #4facfe 40%, #6366f1 100%);
-  border: 1px solid #00f2fe;
-  color: #050814;
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 40%, #ff6b4a 100%);
+  border: 1px solid #fbbf24;
+  color: #1a141e;
   clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
   position: relative;
   overflow: hidden;
-  box-shadow: var(--shadow-neon-cyan);
+  box-shadow: var(--shadow-warm-amber);
   transition: var(--transition);
 }
 
 .btn-cyber-primary:hover {
-  background: linear-gradient(135deg, #00f5a0 0%, #00f2fe 50%, #818cf8 100%);
-  border-color: #00f5a0;
-  color: #050814;
+  background: linear-gradient(135deg, #fffbeb 0%, #fbbf24 40%, #ff6b4a 100%);
+  border-color: #fffbeb;
+  color: #1a141e;
   transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 0 35px rgba(0, 245, 160, 0.7), 0 0 70px rgba(0, 242, 254, 0.4);
+  box-shadow: 0 0 35px rgba(251, 191, 36, 0.75), 0 0 70px rgba(255, 107, 74, 0.45);
 }
 
 .btn-cyber-secondary {
-  background: rgba(19, 26, 48, 0.85);
+  background: rgba(37, 29, 43, 0.85);
   backdrop-filter: blur(12px);
-  border: 1.5px solid var(--violet-neon);
-  color: #ffffff;
+  border: 1.5px solid var(--amber-bright);
+  color: #fef8ee;
   clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
-  box-shadow: var(--shadow-neon-violet);
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.25);
   transition: var(--transition);
 }
 
 .btn-cyber-secondary:hover {
-  background: rgba(121, 40, 202, 0.25);
-  border-color: #b829ea;
+  background: rgba(245, 158, 11, 0.2);
+  border-color: #fbbf24;
   color: #ffffff;
   transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 0 35px rgba(184, 41, 234, 0.7);
+  box-shadow: 0 0 35px rgba(245, 158, 11, 0.55);
 }
 
 .btn-icon {
@@ -349,7 +348,7 @@ input, select, textarea {
   margin-top: 24px;
 }
 
-/* ============ ГЛАВНЫЙ ЭКРАН С ГОЛОГРАММОЙ (HERO CONTAINER) ============ */
+/* ============ ГЛАВНЫЙ ЭКРАН С ТЕПЛОЙ ГОЛОГРАММОЙ (HERO CONTAINER) ============ */
 .hero-container {
   flex: 1;
   display: flex;
@@ -365,14 +364,14 @@ input, select, textarea {
 
 .holo-ring-wrap {
   position: absolute;
-  width: 400px;
-  height: 400px;
+  width: 420px;
+  height: 420px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   pointer-events: none;
   z-index: 0;
-  opacity: 0.65;
+  opacity: 0.7;
 }
 
 .holo-ring {
@@ -382,16 +381,16 @@ input, select, textarea {
 }
 
 .holo-ring.ring-outer {
-  border: 2px dashed rgba(0, 242, 254, 0.35);
-  box-shadow: 0 0 30px rgba(0, 242, 254, 0.2);
+  border: 2px dashed rgba(245, 158, 11, 0.4);
+  box-shadow: 0 0 30px rgba(245, 158, 11, 0.25);
   animation: spinRing 25s infinite linear;
 }
 
 .holo-ring.ring-inner {
   inset: 30px;
-  border: 1.5px solid rgba(121, 40, 202, 0.45);
-  border-top-color: rgba(0, 245, 160, 0.8);
-  border-bottom-color: rgba(0, 242, 254, 0.8);
+  border: 1.5px solid rgba(255, 107, 74, 0.45);
+  border-top-color: rgba(251, 191, 36, 0.95);
+  border-bottom-color: rgba(255, 107, 74, 0.95);
   animation: spinRingRev 18s infinite linear;
 }
 
@@ -403,9 +402,9 @@ input, select, textarea {
   font-family: var(--font-mono);
   font-size: 150px;
   font-weight: 700;
-  color: rgba(0, 242, 254, 0.05);
+  color: rgba(245, 158, 11, 0.07);
   user-select: none;
-  text-shadow: 0 0 50px rgba(0, 242, 254, 0.15);
+  text-shadow: 0 0 50px rgba(245, 158, 11, 0.2);
 }
 
 @keyframes spinRing {
@@ -432,21 +431,21 @@ input, select, textarea {
   font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--cyan-neon);
-  background: rgba(0, 242, 254, 0.08);
-  border: 1px solid rgba(0, 242, 254, 0.25);
+  color: var(--amber-gold);
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.3);
   padding: 6px 16px;
   border-radius: var(--radius-pill);
   margin-bottom: 16px;
-  box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.25);
 }
 
 .pulse-dot {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--cyan-neon);
-  box-shadow: 0 0 10px var(--cyan-neon);
+  background: var(--amber-gold);
+  box-shadow: 0 0 10px var(--amber-gold);
   animation: pulseDot 1.5s infinite ease-in-out;
 }
 
@@ -455,13 +454,13 @@ input, select, textarea {
   font-weight: 800;
   margin: 0 0 16px;
   letter-spacing: -0.02em;
-  background: linear-gradient(135deg, #ffffff 0%, #00f2fe 50%, #b829ea 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #fbbf24 45%, #ff6b4a 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 30px rgba(0, 242, 254, 0.3);
+  text-shadow: 0 0 35px rgba(245, 158, 11, 0.35);
 }
 
-/* Компактные неоновые плашки статуса внизу */
+/* Компактные неоновые плашки статуса внизу в теплых тонах */
 .hero-stats-row {
   display: flex;
   gap: 16px;
@@ -471,7 +470,7 @@ input, select, textarea {
 }
 
 .stat-pill {
-  background: rgba(19, 26, 48, 0.7);
+  background: rgba(37, 29, 43, 0.75);
   backdrop-filter: blur(10px);
   border: 1px solid var(--line);
   padding: 8px 18px;
@@ -493,13 +492,13 @@ input, select, textarea {
 }
 
 .stat-val.neon-green {
-  color: var(--emerald-neon);
-  text-shadow: 0 0 8px rgba(0, 245, 160, 0.4);
+  color: var(--emerald-warm);
+  text-shadow: 0 0 8px rgba(16, 185, 129, 0.4);
 }
 
 .stat-val.neon-cyan {
-  color: var(--cyan-neon);
-  text-shadow: 0 0 8px rgba(0, 242, 254, 0.4);
+  color: var(--amber-gold);
+  text-shadow: 0 0 8px rgba(251, 191, 36, 0.4);
 }
 
 .center-col {

@@ -962,7 +962,7 @@ function initBgCanvas() {
       this.size = this.isSymbol ? Math.random() * 10 + 13 : Math.random() * 2.5 + 1.5;
       this.alpha = Math.random() * 0.45 + 0.2;
       this.baseAlpha = this.alpha;
-      const palette = ["#00f2fe", "#4facfe", "#b829ea", "#00f5a0", "#7928ca"];
+      const palette = ["#fbbf24", "#f59e0b", "#ff6b4a", "#f43f5e", "#10b981"];
       this.color = palette[Math.floor(Math.random() * palette.length)];
     }
     update() {
@@ -1024,7 +1024,7 @@ function initBgCanvas() {
         if (dist < 125) {
           ctx.save();
           ctx.globalAlpha = (1 - dist / 125) * 0.22;
-          ctx.strokeStyle = "#00f2fe";
+          ctx.strokeStyle = "#f59e0b";
           ctx.lineWidth = 1;
           ctx.beginPath();
           ctx.moveTo(particles[i].x, particles[i].y);
