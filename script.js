@@ -962,7 +962,7 @@ function initBgCanvas() {
       this.size = this.isSymbol ? Math.random() * 10 + 13 : Math.random() * 2.5 + 1.5;
       this.alpha = Math.random() * 0.45 + 0.2;
       this.baseAlpha = this.alpha;
-      const palette = ["#fbbf24", "#f59e0b", "#ff6b4a", "#f43f5e", "#10b981"];
+      const palette = ["#4f46e5", "#3b82f6", "#06b6d4", "#6366f1", "#10b981"];
       this.color = palette[Math.floor(Math.random() * palette.length)];
     }
     update() {
@@ -982,7 +982,7 @@ function initBgCanvas() {
         const force = (mouse.radius - dist) / mouse.radius;
         this.x -= (dx / dist) * force * 2;
         this.y -= (dy / dist) * force * 2;
-        this.alpha = Math.min(0.9, this.baseAlpha + force * 0.5);
+        this.alpha = Math.min(0.95, this.baseAlpha + force * 0.5);
       } else {
         this.alpha += (this.baseAlpha - this.alpha) * 0.05;
       }
@@ -993,15 +993,11 @@ function initBgCanvas() {
       if (this.isSymbol) {
         ctx.font = `600 ${this.size}px 'IBM Plex Mono', monospace`;
         ctx.fillStyle = this.color;
-        ctx.shadowColor = this.color;
-        ctx.shadowBlur = 8;
         ctx.fillText(this.text, this.x, this.y);
       } else {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fillStyle = this.color;
-        ctx.shadowColor = this.color;
-        ctx.shadowBlur = 6;
         ctx.fill();
       }
       ctx.restore();
@@ -1023,8 +1019,8 @@ function initBgCanvas() {
         const dist = Math.hypot(dx, dy);
         if (dist < 125) {
           ctx.save();
-          ctx.globalAlpha = (1 - dist / 125) * 0.22;
-          ctx.strokeStyle = "#f59e0b";
+          ctx.globalAlpha = (1 - dist / 125) * 0.18;
+          ctx.strokeStyle = "#4f46e5";
           ctx.lineWidth = 1;
           ctx.beginPath();
           ctx.moveTo(particles[i].x, particles[i].y);
